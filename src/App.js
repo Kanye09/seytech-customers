@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Customers from './Customers';
 import './App.css';
+import SingleCustomer from './SingleCustomer';
+// import Engineers from './Engineers';
+
 
 const customers = [
   {
@@ -41,6 +50,7 @@ class App extends Component {
     super();
     this.state = {
       customers,
+
     }
   }
 
@@ -48,9 +58,37 @@ class App extends Component {
 
   render(){
     return (
-      <div className="container">
-        <h1> Seytech Customers</h1>
-        <Customers customers={this.state.customers} />
+      <div>
+        {/* <Engineers/> */}
+        {/* <hr/> */}
+        <Router>
+        <ul className='menu'>
+          <li><Link to='/home'>Home</Link></li>
+          <li><Link to='/about'>About</Link></li>
+          <li><Link to='/contact'>Contact</Link></li>
+          <li><Link to='/customers'>Customers</Link></li>
+        </ul>
+
+        <div className='pages'>
+          <Switch>
+            <Route path='/' exact>
+              <div className='page'>Home page</div>
+            </Route>
+            <Route path='/about'>
+              <div className='page'>About page</div> 
+            </Route>
+            <Route path='/contact'>
+              <div className='page'>Contact page</div>
+            </Route>
+            <Route path='/customers'>
+              <Customers customers={this.state.customers}/>
+            </Route>
+            <Route path='/customer/:id'>
+              <SingleCustomer customers={this.state.customers}/>
+            </Route>
+          </Switch>   
+        </div>
+      </Router>
       </div>
     )
   }

@@ -9,3 +9,27 @@
     width: 50px;
     border-radius: 50px;
 }
+.row {
+    border: 1px solid #aaa;
+    padding: 5px;
+    padding-left: 20px;
+}
+.row .title {
+    font-weight: bold;
+}
+.row .title, .desc {
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.menu {
+    margin-top: 10px;
+}
+
+.menu li {
+    display: inline-block;
+    margin: 0 5px;
+    background-color: #ddd;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
